@@ -70,10 +70,10 @@ let questions = [
 
 //STATE
 
-let lives = 10;
-let guesses = [ ];
-let space = 0;
-let counter = 0;
+// let lives = 10;
+// let guesses = [ ];
+// let space = 0;
+// let counter = 0;
 // let gameStatus;
 
 
@@ -92,9 +92,9 @@ playAgainBtn.addEventListener("click", play);
 
 hintBtn.addEventListener("click", getHintTxt);
 
-hintBtn.addEventListener("click", getHintTxt);
 
 
+keyboardEl.addEventListener('click', click)
 
 // hint.addEventListener("click", init);
 
@@ -116,8 +116,8 @@ function createKeyboard() {
       list = document.createElement('li');
       list.id = 'letter';
       list.innerHTML = alphabet[i];
-
-    click();
+       
+    // click();
 
       keyboardEl.appendChild(letters);
       letters.appendChild(list);
@@ -192,40 +192,64 @@ function gameStatus () {
     }
     for (let i = 0; i < guesses.length; i++) {
         if (counter + space === guesses.length) {
-            livesEl.innerText = "Congrats! You Win!";
+            result.innerText = "Congrats! You Win!";
         }
     }
 }
-gameStatus();
+// gameStatus();
 
 
 //click letters function
 
-function click () {
-    list.onclick = function () {
-        let guess = (this.innerHTML);
-        console.log(guess);
-        this.setAttribute("class", "active");
-        this.onclick = null;
-        for (let i = 0; i < selectedQuestion[1].length; i++) {
-          if (selectedQuestion[1][i] === guess) {
-            guesses[i].innerHTML = guess.toUpperCase();
+function click(e) {
+    e.target.classList.add('active')
+    let guess = e.target.textContent
+    for (let i = 0; i < selectedQuestion[1].length; i++) {
+        if (selectedQuestion[1][i] === guess) {
+            console.log(guess)
+            guesses[i].textContent = guess.toUpperCase();
             counter += 1;
-            
-            SequenceImg.style.backgroundImage = "url('./Assets/Seq.0" + counter + ".png')";
-          } 
-        }
-        let j = (selectedQuestion[1].indexOf(guess));
-        if (j === -1) {
-          lives -= 1;
-          gameStatus();
-        
-        } else {
-          gameStatus();
-        }
-      
-    }   
+            if (counter <= 5) {
+                SequenceImg.style.backgroundImage = "url('./Assets/Seq.0" + counter + ".png')";    
+            }    
+        }    
+    } 
+    let j = (selectedQuestion[1].indexOf(guess));   
+    if (j === -1) {
+       lives -= 1;
+       gameStatus();
+
+    } else {  
+      gameStatus();  
+    }  
 }
+
+
+    // function click () {
+    //     list.onclick = function () {
+    //         let guess = (this.innerHTML);
+    //         console.log(guess);
+    //         this.setAttribute("class", "active");
+    //         this.onclick = null;
+    //         for (let i = 0; i < selectedQuestion[1].length; i++) {
+    //           if (selectedQuestion[1][i] === guess) {
+    //             guesses[i].innerHTML = guess.toUpperCase();
+    //             counter += 1;
+                
+    //             // SequenceImg.style.backgroundImage = "url('./Assets/Seq.0" + counter + ".png')";
+    //           } 
+    //         }
+    //         let j = (selectedQuestion[1].indexOf(guess));
+    //         if (j === -1) {
+    //           lives -= 1;
+    //           gameStatus();
+            
+    //         } else {
+    //           gameStatus();
+    //         }
+        
+    //     }   
+    // }
 
 
 
@@ -251,16 +275,17 @@ function click () {
         element.classList.remove("active");
         
     });
-    geusses = [ ];
+    guesses = [ ];
     lives = 10;
     counter = 0;
     space = 0;
     // getQuestion();
     // getAnswer();
-    gameStatus();
+    // gameStatus();
     // selectCat();
     answerEl.innerHTML = "";
     questionEl.innerText= "";
+    result.innerText= "";
     SequenceImg.style.backgroundImage = "url('./Assets/Seq.00.jpg')";
   }
   play();
