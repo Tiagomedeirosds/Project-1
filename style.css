@@ -159,6 +159,10 @@ ul {
 	background-color:#be9490;
 }
 
+.active {
+    opacity: 0.3;
+}
+
 
  /* buttons */
  .startBtn {
@@ -186,6 +190,14 @@ ul {
  .playAgainBtn {
      min-height: 100px;
      
+ }
+
+ .resultTxt {
+    font-size: 30px;
+    
+    padding: 10px;
+
+
  }
 
 
