@@ -21,6 +21,8 @@ If you fail, don't worry. "Be a Goldfish" and start it over!
 
 ## Getting Started
 
+### [Play it here](https://tiagomedeirosds.github.io/Project-1/)
+
 * Before you start the game, give a look at it. Check where the Start ("kick here"), Hint and the Reset buttons are located.
 * Click on the "Let's play! Kick here!" button to start the game, which is going to generate a question.
 * Based on the generated question, you can start guessing clicking the letters on the blue board and checking the amount of letters represented by underlines on the white board.
